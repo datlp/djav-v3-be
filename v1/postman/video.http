@@ -1,0 +1,14 @@
+@url_dev=http://localhost:3056/v1/api
+
+### Videos
+GET {{url_dev}}/video?page=1&limit=48
+Content-Type: application/json
+
+### Video
+GET {{url_dev}}/video/FSDSS-622
+Content-Type: application/json
+
+### search
+GET {{url_dev}}/video/search/in law?page=6
+Content-Type: application/json
+

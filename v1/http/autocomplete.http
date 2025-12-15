@@ -1,0 +1,8 @@
+ @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MjM0NmZkMjE4ZDJmMDEyNGNiMjRmZSIsImVtYWlsIjoibGVwaHVkYXQuOThAZ21haWwuY29tIiwidXNlcm5hbWUiOiJsZXBodWRhdDk4IiwiaWF0IjoxNzQ3MjAxMDI4LCJleHAiOjE3NDk3OTMwMjh9.gVMcLkLGLjSTKhsWYlpiYROCJbvEuzwEyc0Uno6pzXo
+
+@endpoint = http://localhost:3056/api/v1/autocomplete
+GET {{endpoint}}?type=fuzzy&query=pregnant
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+

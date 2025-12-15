@@ -1,0 +1,109 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MjQyY2ZhMGM5ZGMzMzkwY2I5OWJiMCIsImVtYWlsIjoid3JpdGVwaHVkYXRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJ3cml0ZXBodWRhdCIsImlhdCI6MTc0NzIxNzIwNSwiZXhwIjoxNzQ5ODA5MjA1fQ.buaK__kW0vP8xtXnE8ob06EXk5kbbDuseTB_WktOCdw
+@endpoint = http://localhost:3056/api/v1/videos
+
+### Get a list of videos
+GET {{endpoint}}?type=popular&searchKey=yua mikami
+
+
+
+### Get video details by DVD (requires user authentication)
+GET {{endpoint}}/detail/SSIS-885
+Authorization: Bearer {{token}}  
+
+### Create a new video
+POST {{endpoint}}/create
+Content-Type: application/json
+
+{
+  "title": "Example Video",
+  "description": "Description of the example video",
+  "video_dvd": "ex001",
+  "release_date": "2024-07-28",
+  "genre": "Example",
+  "director": "John Doe",
+  "cast": ["Actor 1", "Actor 2"],
+  "duration": 120,
+  "files": ["file1.mp4", "file2.mp4"]
+}
+
+### Check for existence of videos by DVD
+POST {{endpoint}}/checks
+Content-Type: application/json
+
+["ex001", "ex002", "ex003"]
+
+### Create multiple videos
+POST {{endpoint}}/create/multiple
+Content-Type: application/json
+
+[
+  {
+    "title": "Video 1",
+    "description": "Description 1",
+    "video_dvd": "v1",
+    "release_date": "2024-07-28",
+     "genre": "Example",
+    "director": "John Doe",
+    "cast": ["Actor 1", "Actor 2"],
+    "duration": 120,
+    "files": ["file1.mp4", "file2.mp4"]
+  },
+  {
+    "title": "Video 2",
+    "description": "Description 2",
+    "video_dvd": "v2",
+    "release_date": "2024-07-29",
+     "genre": "Example",
+    "director": "John Doe",
+    "cast": ["Actor 1", "Actor 2"],
+    "duration": 120,
+    "files": ["file1.mp4", "file2.mp4"]
+  }
+]
+
+### Update video files
+PUT {{endpoint}}/update-files
+Content-Type: application/json
+
+{
+  "video_dvd": "ex001",
+  "files": ["file1_new.mp4", "file2_new.mp4"]
+}
+
+### Update video details
+PUT {{endpoint}}/update
+Content-Type: application/json
+
+{
+  "video_dvd": "ex001",
+  "description": "Updated description",
+  "duration": 130
+}
+
+### Vote for a video
+PUT {{endpoint}}/vote
+Content-Type: application/json
+
+{
+  "video_dvd": "ex001",
+  "vote": 5
+}
+
+### Update multiple videos
+PUT {{endpoint}}/update/multiple
+Content-Type: application/json
+[
+  {
+    "video_dvd": "v1",
+    "description": "Updated Description 1",
+    "duration": 130
+  },
+  {
+    "video_dvd": "v2",
+     "genre": "Example",
+    "director": "John Doe",
+    "cast": ["Actor 1", "Actor 2"],
+    "duration": 120,
+    "files": ["file1.mp4", "file2.mp4"]
+  }
+]
