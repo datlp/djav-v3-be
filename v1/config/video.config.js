@@ -18,12 +18,7 @@ const FIELD_SELECT = [
 const ASCENDING = 1;
 const DESCENDING = -1;
 
-const REDIS_CACHE_MAX_PAGE = 5;
-const REDIS_TTL_SECONDS = 1800; // 30 minutes
-
 exports.FIELD_SELECT = FIELD_SELECT;
-exports.REDIS_CACHE_MAX_PAGE = REDIS_CACHE_MAX_PAGE;
-exports.REDIS_TTL_SECONDS = REDIS_TTL_SECONDS;
 
 class FeedConfigFactory {
   static createConfig(feedType) {
@@ -62,7 +57,6 @@ class FeedConfigFactory {
       filter: { video_files: { $gt: 0 } },
       sort: { video_fileMaxSize: DESCENDING, _id: DESCENDING },
       select: FIELD_SELECT,
-      useCache: true,
     };
   }
 
@@ -79,7 +73,6 @@ class FeedConfigFactory {
       filter: { video_files: { $gt: 0 } },
       sort: { video_release: DESCENDING, _id: DESCENDING },
       select: FIELD_SELECT,
-      useCache: true,
     };
   }
 
@@ -88,7 +81,6 @@ class FeedConfigFactory {
       filter: { video_files: { $gt: 0 }, video_views: { $gt: 0 } },
       sort: { video_views: DESCENDING, _id: DESCENDING },
       select: FIELD_SELECT,
-      useCache: true,
     };
   }
 
@@ -177,7 +169,6 @@ class FeedConfigFactory {
       filter: { video_files: { $gt: 0 } },
       sort: { video_fileMaxSize: ASCENDING, _id: DESCENDING },
       select: FIELD_SELECT,
-      useCache: true,
     };
   }
 
@@ -194,7 +185,6 @@ class FeedConfigFactory {
       filter: { video_files: { $gt: 0 } },
       sort: { video_release: ASCENDING, _id: DESCENDING },
       select: FIELD_SELECT,
-      useCache: true,
     };
   }
 
@@ -203,7 +193,6 @@ class FeedConfigFactory {
       filter: { video_files: { $gt: 0 }, video_views: { $gt: 0 } },
       sort: { video_views: ASCENDING, _id: DESCENDING },
       select: FIELD_SELECT,
-      useCache: true,
     };
   }
   static _negativeRecommendConfig() {

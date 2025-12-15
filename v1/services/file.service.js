@@ -11,12 +11,10 @@ const FEEDS = {
   create: ({ ctime }) => ({
     sort: { createOn: ctime, _id: -1 },
     select: FIELD_SELECT,
-    // useCache: true,
   }),
   modify: ({ ctime }) => ({
     sort: { modifyOn: ctime, _id: -1 },
     select: FIELD_SELECT,
-    // useCache: true,
   }),
 };
 class FileService {

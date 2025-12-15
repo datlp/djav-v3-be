@@ -6,12 +6,7 @@ const videoModel = require('../models/video.model');
 const fileModel = require('../models/file.model');
 const videoRepo = require('../models/repository/video.repo');
 
-const {
-  FEEDS,
-  REDIS_CACHE_MAX_PAGE,
-  REDIS_TTL_SECONDS,
-  FeedConfigFactory,
-} = require('../config/video.config');
+const { FeedConfigFactory } = require('../config/video.config');
 const viewModel = require('../models/view.model');
 
 class VideoService {
@@ -32,7 +27,6 @@ class VideoService {
       });
     }
 
-    console.log(`retrieved:: ${redisKey} from Mongo`);
     const result = await videoRepo.findVideos({
       ...feed,
       page,
